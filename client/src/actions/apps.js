@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export const getApps = () => {
+export const getApps = (cb) => {
   return (dispatch) => {
     axios.get('/api/apps')
       .then( res => dispatch({ type: 'APPS', apps: res.data }) )
+      .then( cb() )
   }
 }
 
